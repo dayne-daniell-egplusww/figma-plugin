@@ -15,6 +15,7 @@ import { isHostGitlabCom, GITLAB_COM_HOST } from '../utils/gitlab_utils';
 import { postPluginMessage } from '../utils/figma_utils';
 import { get } from 'http';
 
+
 export default {
   name: 'ProcessFiles',
   components: {
@@ -54,15 +55,16 @@ export default {
     },
   },
   mounted() {
-    /* this listener is tied to the upload function
-     * when the upload button is pressed, this.uploadSelection is called with the 
-     * contents of what is selected on the screen
+
+    /* this listener is tied to the process function
+     * when the process button is pressed, the pub/sub function fires off on the figma side
+     * when the figma side is done processing, it publishes the PROCESS_SELECTION message with the data
+     * so the UI side can post the data in the API call
     */
     windowEmitter.on(FIGMA_MESSAGE_TYPES.PROCESS_SELECTION, (data) => {
-
       console.log('data.selections in process_files.vue are',data.selections);
       console.log('currentPresentation in process_files.vue is',data.currentPresentation)
-      this.processSelectionForUpload(data.currentNodes, data.currentPresentation, data.selections);
+      this.processSelectionForUpload(data.currentNodes, data.currentPresentation, data.selections, data.payloadSlides);
 
     });
 
@@ -111,7 +113,9 @@ export default {
       // before the apiCall (or the gitlab call), the data needs processed. 
       const payload = datum;
 
-      const size = new TextEncoder().encode(JSON.stringify(payload)).length
+      console.log('payload is', payload)
+
+      const size = new TextEncoder().encode(JSON.stringify(payload)).length;
       const kiloBytes = size / 1024;
       const megaBytes = kiloBytes / 1024;
       console.log('payload size (mb): ', megaBytes);
@@ -137,12 +141,11 @@ export default {
      * @param {} selections
      *  
      */
-    async processSelectionForUpload(currentNodes, currentPresentation, selections){
+    async processSelectionForUpload(currentNodes, currentPresentation, selections, payloadSlides){
 
       console.log('process selection for upload called');
 
       if (!this.isValidSelection(selections)) {
-    
         return this.alertDanger(`Upload failed: designs must have unique names.`);
       } else {
         if(!selections){
@@ -150,13 +153,12 @@ export default {
         } else {
           console.log('call the processing function here')
           
-          this.apiCall(selections)
+          this.apiCall(payloadSlides)
         }
       }
     },
 
     onProcess() {
-      console.log('should be processing');
       this.isUploading = true;
       this.clearAlert();
       postPluginMessage(FIGMA_MESSAGE_TYPES.PROCESS_SELECTION);
@@ -170,16 +172,17 @@ export default {
     <!-- Splash screen -->
     <div v-if="!afterInitialLoad" class="h-100 d-flex align-items-center justify-content-center">
       <figma-section>
-      <figma-label class="w-50">Staging/Processing Host URL:</figma-label>
+        <fieldset>
+      <figma-label class="w-75">Staging/Processing Host URL:</figma-label>
       <figma-input
               id="processing_host"
               v-model="laVida.processing.host"
               placeholder="gitlab.mycompany.com"
               type="text"
-              
             ></figma-input>
+          </fieldset>
 
-            <figma-button  @click="onProcess"> {{
+            <figma-button  @click="onProcess" class="mt-2"> {{
         isUploading ? 'Processing' : 'Process'
       }}</figma-button>
 </figma-section>
@@ -197,7 +200,6 @@ export default {
         >
 
       </figma-section>
-
     </template>
   </main>
 </template>

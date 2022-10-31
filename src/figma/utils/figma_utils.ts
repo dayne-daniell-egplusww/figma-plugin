@@ -59,13 +59,3 @@ export const getUserConfig = (): Promise<UserConfig | null> => {
       return USER_CONFIG_DEFAULTS;
     });
 };
-
-export const  _arrayBufferToBase64 = ( buffer ) => {
-  var binary = '';
-  var bytes = new Uint16Array( buffer );
-  var len = bytes.byteLength;
-  for (var i = 0; i < len; i++) {
-      binary += String.fromCharCode( bytes[ i ] );
-  }
-  return binary;
-}

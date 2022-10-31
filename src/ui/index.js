@@ -46,15 +46,6 @@ window.onmessage = event => {
         break;
       }
 
-      case FIGMA_MESSAGE_TYPES.PROCESS_SELECTION: {
-        console.log(pluginMessage.data)
-        const { frames, components } = pluginMessage.data.selections;
-        const  currentPresentation = pluginMessage.data.currentPresentation;
-        const currentNodes = pluginMessage.data.currentNodes;
-        const payloadSlides = pluginMessage.data.payloadSlides;
-
-        console.log('payload slides in index.js are',payloadSlides);
-      }
       default:
         break;
     }

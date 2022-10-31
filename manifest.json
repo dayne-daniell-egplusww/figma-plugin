@@ -1,21 +1,11 @@
 {
-  "name": "GitLab",
+  "name": "LaVida",
   "id": "860845891704482356",
   "api": "1.0.0",
   "main": "dist/main.js",
   "ui": "dist/ui.html",
   "editorType": ["figma"],
   "menu": [
-    {
-      "name": "Upload Designs to GitLab",
-      "command": "show_upload_ui"
-    },
-    { "separator": true },
-    {
-      "name": "Upload Slides to Staging Server",
-      "command": "show_upload_ui"
-    },
-    { "separator": true },
     {
       "name": "Process Slides for Production",
       "command": "show_process_ui"

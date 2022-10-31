@@ -1,6 +1,6 @@
 {
-  "name": "gitlab-figma-plugin",
-  "description": "GitLab Figma Plugin",
+  "name": "lavida-figma-plugin",
+  "description": "LaVida Figma Plugin",
   "license": "MIT",
   "scripts": {
     "test": "jest tests/",
