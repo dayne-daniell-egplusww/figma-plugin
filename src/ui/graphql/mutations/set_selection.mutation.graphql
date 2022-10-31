@@ -1,0 +1,3 @@
+mutation($frames: [String]!, $components: [String]!) {
+  setSelection(frames: $frames, components: $components) @client
+}

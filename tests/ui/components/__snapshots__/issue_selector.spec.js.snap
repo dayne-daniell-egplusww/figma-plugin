@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Issue selector component with no search text renders the empty state 1`] = `
+"<div issue=\\"[object Object]\\">
+  <figma-input-section-stub id=\\"issue_url_input\\" icon=\\"search\\" type=\\"text\\" placeholder=\\"Filter by issue number, title, or paste an issue URL\\" required=\\"\\" class=\\"border-bottom-grey\\"></figma-input-section-stub>
+  <figma-section-stub class=\\"pl-large\\" style=\\"display: none;\\">
+    <figma-form-feedback-stub variant=\\"invalid\\"> </figma-form-feedback-stub>
+  </figma-section-stub>
+  <figma-section-stub class=\\"px-3 py-2 text-xsmall\\" style=\\"display: none;\\">
+    <figma-loading-icon-stub></figma-loading-icon-stub>
+  </figma-section-stub>
+  <ul class=\\"p-0 m-0\\">
+    <issue-stub issue=\\"[object Object]\\" class=\\"border-bottom-grey\\"></issue-stub>
+    <issue-stub issue=\\"[object Object]\\" class=\\"border-bottom-grey\\"></issue-stub>
+    <issue-stub issue=\\"[object Object]\\" class=\\"border-bottom-grey\\"></issue-stub>
+    <issue-stub issue=\\"[object Object]\\" class=\\"border-bottom-grey\\"></issue-stub>
+  </ul>
+</div>"
+`;

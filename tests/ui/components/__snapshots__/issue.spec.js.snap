@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Issue component renders the component 1`] = `
+"<li id=\\"issue_54321\\" class=\\"pl-large pr-xxsmall pt-xxsmall pb-xxsmall hover-bg-selection-b cursor-pointer list-style-none position-relative\\">
+  <!---->
+  <div class=\\"d-flex\\">
+    <div class=\\"flex-grow-1\\">
+      <div><span><a target=\\"_blank\\" href=\\"https://gitlab.com/gitlab-org/gitlab/-/issues/12345\\" class=\\"text-black8 hover-text-black8 text-large font-weight-bold mb-xxxsmall inline-block line-height-small\\">Merge requests requiring attention</a></span></div>
+      <div class=\\"font-weight-normal text-black6 text-small\\"><span class=\\"issue-reference-path\\"></span></div>
+    </div>
+    <div>
+      <!---->
+    </div>
+  </div>
+</li>"
+`;
+
+exports[`Issue component with a closed issue renders indication that the issue is closed 1`] = `
+"<li id=\\"issue_54321\\" class=\\"pl-large pr-xxsmall pt-xxsmall pb-xxsmall hover-bg-selection-b cursor-pointer list-style-none position-relative\\">
+  <!---->
+  <div class=\\"d-flex\\">
+    <div class=\\"flex-grow-1\\">
+      <div><span><a target=\\"_blank\\" href=\\"https://gitlab.com/gitlab-org/gitlab/-/issues/12345\\" class=\\"text-black8 hover-text-black8 text-large font-weight-bold mb-xxxsmall inline-block line-height-small\\">Merge requests requiring attention</a></span></div>
+      <div class=\\"font-weight-normal text-black6 text-small\\"><span class=\\"issue-reference-path\\"></span></div>
+    </div>
+    <div><span class=\\"ml-xxsmall text-large line-height-small\\">CLOSED</span></div>
+  </div>
+</li>"
+`;

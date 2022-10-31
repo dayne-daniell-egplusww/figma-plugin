@@ -1,0 +1,13 @@
+# VSCode
+.vscode/
+
+# Dependency directories
+node_modules/
+dist
+
+# Misc
+.DS_Store
+
+gitlab_figma_plugin_dist/
+
+stats.json

@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Login page after initial load renders login page 1`] = `
+"<main class=\\"h-100 d-flex flex-column\\">
+  <figma-section-stub class=\\"flex-grow\\">
+    <!---->
+    <div class=\\"w-100 p-medium m-auto\\">
+      <empty-issue-illustration-stub></empty-issue-illustration-stub>
+    </div>
+    <p class=\\"text-xsmall\\">You are one step away from contributing to your designs.</p>
+    <p class=\\"text-xsmall\\">
+      Authenticate with GitLab using a GitLab personal access token.
+    </p>
+    <form id=\\"set_user_config_form\\" class=\\"m-0\\">
+      <figma-label-stub>GitLab access token</figma-label-stub>
+      <figma-input-stub value=\\"\\" state=\\"true\\" id=\\"access_token_input\\" type=\\"password\\" required=\\"\\"></figma-input-stub>
+      <figma-checkbox-stub label=\\"I am using a self-managed GitLab instance\\" id=\\"gitlab_instance_toggle\\" class=\\"pt-small pb-small\\"></figma-checkbox-stub>
+      <!---->
+    </form>
+  </figma-section-stub>
+  <figma-section-stub class=\\"d-flex justify-content-between align-items-center w-100 border-top-grey\\"><a href=\\"https://gitlab.com/gitlab-org/gitlab-figma-plugin/-/wikis/home#creating-a-gitlab-personal-access-token\\" rel=\\"noopener noreferrer\\" target=\\"_blank\\" class=\\"text-xsmall\\">Where to find my token?
+    </a>
+    <figma-button-stub variant=\\"primary\\" type=\\"submit\\" form=\\"set_user_config_form\\">Save settings</figma-button-stub>
+  </figma-section-stub>
+</main>"
+`;
+
+exports[`Login page on initial load renders splash screen 1`] = `
+"<main class=\\"h-100 d-flex flex-column\\">
+  <div class=\\"h-100 d-flex align-items-center justify-content-center\\">
+    <gitlab-logo-stub class=\\"w-50\\"></gitlab-logo-stub>
+  </div>
+</main>"
+`;

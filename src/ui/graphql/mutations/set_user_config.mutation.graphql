@@ -1,0 +1,3 @@
+mutation($userConfig: UserConfig) {
+  setUserConfig(userConfig: $userConfig) @client
+}

@@ -1,0 +1,20 @@
+mutation uploadDesign($files: [Upload!]!, $projectPath: ID!, $id: ID!) {
+  designManagementUpload(input: { projectPath: $projectPath, id: $id, files: $files }) {
+    designs {
+      id
+      filename
+      versions {
+        edges {
+          node {
+            id
+            sha
+          }
+        }
+      }
+    }
+    skippedDesigns {
+      filename
+    }
+    errors
+  }
+}

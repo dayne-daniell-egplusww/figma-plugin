@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "module": "es6",
+    "moduleResolution": "node",
+    "target": "es5",
+    "outDir": "dist/",
+    "baseUrl": ".",
+    "typeRoots": [
+      "node_modules/@types",
+      "node_modules/@figma",
+      "src/@types"
+    ],
+    "paths": {
+      "~/*": [
+        "src/*"
+      ]
+    }
+  },
+  "include": [
+    "src/figma/**/*",
+    "src/@types/**/*"
+  ],
+  "exclude": [
+    "src/ui/**/*" // UI is not typescript (yet?)
+  ]
+}

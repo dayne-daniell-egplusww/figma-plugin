@@ -1,0 +1,24 @@
+type Selection {
+  components: [String]!
+  frames: [String]!
+}
+
+type GitlabInstanceConfig {
+  host: String
+}
+
+type UserConfig {
+  accessToken: String
+  gitlabInstance: GitlabInstanceConfig
+}
+
+type User {
+  id: ID
+  name: String
+  username: String
+}
+
+extend type Mutation {
+  setSelection(components: [String]!, frames: [String]!): Selection
+  setUserConfig(userConfig: UserConfig): Void
+}

@@ -1,0 +1,22 @@
+name: GitLab
+description: "The Official GitLab plugin to seamlessly upload your designs from Figma to GitLab issues.
+
+  Design is larger than designers. Design Management should involve the relevant stakeholders in the conversation on functionality, interaction, UX and much more.
+  Now you can start those productive hand-off conversations over designs and source code in GitLab while keeping Figma connected to make any improvements.
+  Collaborate seamlessly where the action happens with GitLab’s Figma plugin. 
+
+  Note: this plugin is currently in Beta. At GitLab, we believe that everyone can contribute. If you’d like to request a feature or report a problem, 
+  create an issue or submit a merge request at https://gitlab.com/gitlab-org/gitlab-figma-plugin"
+tags: # up to 12
+ - collaboration
+ - design
+ - designer
+ - developer
+ - export
+ - gitlab
+ - handoff
+ - hand-off
+ - management
+ - productivity
+ - upload
+support_contact: https://gitlab.com/gitlab-org/gitlab-figma-plugin/-/issues

@@ -1,0 +1,88 @@
+/* PLUGIN-SPECIFIC UTILITIES */
+.bottom-0 {
+  bottom: 0;
+}
+.cursor-pointer {
+  cursor: pointer;
+}
+.bg-selection-a,
+.hover-bg-selection-a:hover {
+  background-color: var(--selection-a);
+}
+.bg-selection-b,
+.hover-bg-selection-b:hover {
+  background-color: var(--selection-b);
+}
+.list-style-none {
+  list-style: none;
+}
+.bg-white {
+  background-color: var(--white);
+}
+.flex-grow {
+  flex-grow: 1;
+}
+
+/* FIGMA UTILITIES */
+// TODO eventually contribute these back to figma-plugin-ds
+.text-xsmall {
+  font-size: var(--font-size-xsmall);
+  line-height: var(--font-line-height);
+}
+.text-small {
+  font-size: var(--font-size-small);
+  line-height: var(--font-line-height);
+}
+.text-large {
+  font-size: var(--font-size-large);
+  line-height: var(--font-line-height-large);
+}
+.text-xlarge {
+  font-size: var(--font-size-xlarge);
+  line-height: var(--font-line-height-large);
+}
+
+.text-black {
+  color: var(--black);
+}
+.text-black8 {
+  color: var(--black8);
+}
+.text-black6 {
+  color: rgba(0, 0, 0, 0.6);
+}
+.text-black3 {
+  color: var(--black3);
+}
+.border-black1 {
+  border: 1px solid var(--black1);
+}
+.hover-text-black:hover {
+  color: var(--black);
+}
+.hover-text-black8:hover {
+  color: var(--black8);
+}
+.hover-text-black3:hover {
+  color: var(--black3);
+}
+
+.line-height-small {
+  line-height: var(--font-line-height-small);
+}
+.line-height-large {
+  line-height: var(--font-line-height-large);
+}
+
+.border-top-grey {
+  border-top: 1px solid var(--grey);
+}
+.border-bottom-grey {
+  border-bottom: 1px solid var(--grey);
+}
+.border-top-silver {
+  border-top: 1px solid var(--silver);
+}
+.border-bottom-silver {
+  border-bottom: 1px solid var(--silver);
+}

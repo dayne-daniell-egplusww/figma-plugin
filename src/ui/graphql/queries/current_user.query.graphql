@@ -1,0 +1,7 @@
+query currentUser {
+  currentUser @client {
+    id
+    name
+    username
+  }
+}

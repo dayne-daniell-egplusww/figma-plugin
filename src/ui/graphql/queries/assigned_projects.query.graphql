@@ -1,0 +1,3 @@
+query assignedProjects {
+  assignedProjects @client
+}

@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Figma button component renders component with props 1`] = `
+"<button class=\\"button button--primary\\" type=\\"submit\\">test
+  <!----></button>"
+`;
+
+exports[`Figma button component renders default component 1`] = `
+"<button class=\\"button button--primary\\">test
+  <!----></button>"
+`;

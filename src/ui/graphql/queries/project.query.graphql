@@ -1,0 +1,5 @@
+query project($fullPath: ID!, $id: String!) {
+  project(fullPath: $fullPath) {
+    id
+  }
+}

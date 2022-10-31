@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Figma alert component renders default component 1`] = `
+"<div class=\\"d-flex align-items-center w-100 p-xxsmall pl-xsmall text-xsmall alert alert--info\\">
+  <div class=\\"flex-grow-1\\"></div>
+  <div class=\\"icon-button cursor-pointer\\">
+    <div class=\\"icon icon--close cursor-pointer\\"></div>
+  </div>
+</div>"
+`;

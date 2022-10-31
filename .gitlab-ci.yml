@@ -1,0 +1,45 @@
+.npm_install: &npm_install |
+  npm ci --cache .npm --prefer-offline
+
+include:
+  - template: Dependency-Scanning.gitlab-ci.yml  # https://gitlab.com/gitlab-org/gitlab-foss/blob/master/lib/gitlab/ci/templates/Security/Dependency-Scanning.gitlab-ci.yml
+  - template: License-Scanning.gitlab-ci.yml  # https://gitlab.com/gitlab-org/gitlab-foss/blob/master/lib/gitlab/ci/templates/Security/License-Scanning.gitlab-ci.yml
+  - template: SAST.gitlab-ci.yml  # https://gitlab.com/gitlab-org/gitlab-foss/blob/master/lib/gitlab/ci/templates/Security/SAST.gitlab-ci.yml
+  - template: Secret-Detection.gitlab-ci.yml # https://gitlab.com/gitlab-org/gitlab-foss/blob/master/lib/gitlab/ci/templates/Security/Secret-Detection.gitlab-ci.yml
+
+image: node:12-slim
+
+stages:
+  - lint
+  - build
+  - test
+
+# Cache modules in between jobs
+cache:
+  key: ${CI_COMMIT_REF_SLUG}
+  paths:
+    - .npm/
+
+lint:
+  before_script:
+    - *npm_install
+  script: npm run eslint
+  stage: lint
+
+build:
+  before_script:
+    - *npm_install
+  script: npm run build
+  stage: build
+
+test-ui:
+  before_script:
+    - *npm_install
+  script: npm run test:ui
+  stage: test
+
+test-figma:
+  before_script:
+    - *npm_install
+  script: npm run test:figma
+  stage: test

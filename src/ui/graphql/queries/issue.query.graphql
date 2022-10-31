@@ -1,0 +1,12 @@
+query issue($fullPath: ID!, $iid: String!) {
+  project(fullPath: $fullPath) {
+    id
+    issue(iid: $iid) {
+      iid
+      title
+      state
+      reference
+      webUrl
+    }
+  }
+}

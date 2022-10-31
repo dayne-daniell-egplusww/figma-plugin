@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Figma input component renders component with props 1`] = `
+"<div class=\\"input\\">
+  <!----> <input type=\\"password\\" placeholder=\\"Test placeholder\\" class=\\"input__field border-black1\\"></div>"
+`;
+
+exports[`Figma input component renders default component 1`] = `
+"<div class=\\"input\\">
+  <!----> <input class=\\"input__field border-black1\\"></div>"
+`;
