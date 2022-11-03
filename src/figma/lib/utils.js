@@ -11,6 +11,7 @@ function _arrayBufferToBase64( buffer ) {
 
 
 export const exportNodeSVG = async (node) => {
+    console.log(node)
     return new Promise((resolve, reject) => {
         node.exportAsync({format: 'SVG', svgIdAttribute: true}).then(res => {
             let result = _arrayBufferToBase64(res);

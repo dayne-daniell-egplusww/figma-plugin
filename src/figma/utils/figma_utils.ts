@@ -29,7 +29,6 @@ const USER_CONFIG_DEFAULTS = {
  */
 export const getCurrentPresentation = () => {
   const currentPage = figma.currentPage;
-  console.log('current page in getCurrentPresentation function is', currentPage)
   return currentPage
 }
 
@@ -39,9 +38,11 @@ export const getAllNodes = () => {
 
 export const exportNodeSVG = async (node) => {
   return new Promise((resolve, reject) => {
+    if(node) {
       node.exportAsync({format: 'SVG', svgIdAttribute: true}).then(res => {
-          resolve(String.fromCharCode.apply(null, res));
-      }).catch(err => reject(err));
+        resolve(String.fromCharCode.apply(null, res));
+    }).catch(err => reject(err));
+    }
   });
 }
 

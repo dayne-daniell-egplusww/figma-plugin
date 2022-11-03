@@ -26,7 +26,7 @@ export function pngFileFromData(data, filename) {
 }
 
 export function jsonFileFromData(data) {
-  return JSON.stringify(data)
+  return JSON.stringify(data, null, -1)
 }
 
 /**

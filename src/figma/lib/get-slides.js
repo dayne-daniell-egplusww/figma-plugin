@@ -20,20 +20,19 @@ import {
 } from './utils';
 
 export const getSlides = async (presentation) => {
-console.log('getSlides called with presentation as', presentation)
+
     return new Promise(async (resolve, reject) => {
 
         // get all the slide nodes
         const slideNodes = presentation.children;
         const svgMap = {}
 
-        console.log('slideNodes ->', slideNodes.map(item => item.name));
-
         for (const [nodeIndex, node] of slideNodes.entries()) {
+            console.log('node is', node)
             
             const slideContent = node.children.find(item => item.name === 'CONTENT');
             
-            svgMap[node.id] = await exportNodeSVG(slideContent) 
+            svgMap[node.id] = await exportNodeSVG(slideContent);
         }
 
         // second we need to collect each true slide in the pres
@@ -53,9 +52,6 @@ console.log('getSlides called with presentation as', presentation)
             const slideNode = slideNodes.find(nodeItem => {
                 return slideId === nodeItem.name.split(SLIDE_ID_FROM_NAME)[0];
             });
-
-
-            
 
             return {
 
@@ -104,64 +100,7 @@ console.log('getSlides called with presentation as', presentation)
 
         });
 
-        // // let's get the SVGs for the slide, inlcuding tabs and overlays
-        // for (const [slideIndex, slide] of slideContent.entries()) {
-
-        //     //slideContent[slideIndex].slideChrome = (slide.slideChrome) ? await exportNodeSVG(slide.slideChrome) : null;
-            
-        //     slideContent[slideIndex].slideContent = (slide.slideContent) ? await exportNodeSVG(slide.slideContent) : null;
-
-        //     for (const [tabIndex, tab] of slide.slideTabs.entries()) {
-
-        //         slideContent[slideIndex].slideTabs[tabIndex].slideTab = (tab.slideTab) ? await exportNodeSVG(tab.slideTab) : null;
-            
-        //     }
-
-        //     for (const [overlayIndex, overlay] of slide.slideOverlays.entries()) {
-                
-        //         slideContent[slideIndex].slideOverlays[overlayIndex].slideOverlay = (overlay.slideOverlay) ? await exportNodeSVG(overlay.slideOverlay) : null;
-            
-        //     }
-
-        // }
-
-        // // ok, this is for the POC --- UPDATE --- going back to a different way...oof
-        // // the payload will be too big to nest the tabs and overlays
-        // const returnSlideArray = [];
-
-        // // for the POC, we need everything in the same slide
-        // slideContent.forEach(slide => {
-
-        //     returnSlideArray.push(slide);
-
-        //     JSON.parse(JSON.stringify(slide.slideTabs)).forEach(tab => {
-        //         returnSlideArray.push(tab);
-        //     });
-
-        //     JSON.parse(JSON.stringify(slide.slideOverlays)).forEach(overlay => {
-        //         returnSlideArray.push(overlay);
-        //     });
-
-        // });
-
-        // returnSlideArray.map(item => {
-            
-        //     if (item.type === 'slide') {
-
-        //         item.slideTabs = item.slideTabs.map(tab => {
-        //             tab.slideTab = tab.detailId;
-        //             return tab;
-        //         });
-
-        //         item.slideOverlays = item.slideOverlays.map(overlay => {
-        //             overlay.slideOverlay = overlay.detailId;
-        //             return overlay;
-        //         });
-
-        //     }
-
-        //     return item;
-        // });
+        console.log('slidecontent in getslides is', slideContent)
 
         return resolve(slideContent);
 

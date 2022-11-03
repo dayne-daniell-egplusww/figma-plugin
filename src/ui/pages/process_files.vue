@@ -15,7 +15,6 @@ import { isHostGitlabCom, GITLAB_COM_HOST } from '../utils/gitlab_utils';
 import { postPluginMessage } from '../utils/figma_utils';
 import { get } from 'http';
 
-
 export default {
   name: 'ProcessFiles',
   components: {
@@ -115,7 +114,7 @@ export default {
 
       console.log('payload is', payload)
 
-      const size = new TextEncoder().encode(JSON.stringify(payload)).length;
+      const size = new TextEncoder().encode(JSON.stringify(payload, null, -1)).length;
       const kiloBytes = size / 1024;
       const megaBytes = kiloBytes / 1024;
       console.log('payload size (mb): ', megaBytes);
@@ -127,13 +126,14 @@ export default {
               'Accept': 'application/json',
               'Content-Type': 'application/json',
           },
-          body: JSON.stringify({ payload: payload }),
+          body: JSON.stringify({ payload: payload }, null, -1),
       }
 
       const response =  fetch('http://localhost:1065/api/', config);
       const data =  JSON.stringify(response);
       this.isUploading = false;
       console.log('fetch done! ', data);
+
     },
 
     /**
@@ -173,13 +173,13 @@ export default {
     <div v-if="!afterInitialLoad" class="h-100 d-flex align-items-center justify-content-center">
       <figma-section>
         <fieldset>
-      <figma-label class="w-75">Staging/Processing Host URL:</figma-label>
+    <!--  <figma-label class="w-75">Staging/Processing Host URL:</figma-label>
       <figma-input
               id="processing_host"
               v-model="laVida.processing.host"
               placeholder="gitlab.mycompany.com"
               type="text"
-            ></figma-input>
+            ></figma-input> -->
           </fieldset>
 
             <figma-button  @click="onProcess" class="mt-2"> {{
