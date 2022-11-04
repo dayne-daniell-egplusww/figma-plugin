@@ -41,6 +41,7 @@ export default {
       alertMessage: '',
       errorMessage: '',
       genericError: false,
+      responseDetails: ''
     };
   },
   apollo: {
@@ -108,7 +109,7 @@ export default {
      * this is the function that does the post of packaged data to the server for further processing
      */
 
-    apiCall(datum)  {
+    async apiCall(datum)  {
       // before the apiCall (or the gitlab call), the data needs processed. 
       const payload = datum;
 
@@ -129,10 +130,11 @@ export default {
           body: JSON.stringify({ payload: payload }, null, -1),
       }
 
-      const response =  fetch('http://localhost:1065/api/', config);
-      const data =  JSON.stringify(response);
+      const response =  await fetch('http://localhost:1065/api/', config);
+      const data =  await response.json();
+      this.responseDetails = data.details;
       this.isUploading = false;
-      console.log('fetch done! ', data);
+    //  console.log('fetch done! ', data);
 
     },
 
@@ -143,7 +145,7 @@ export default {
      */
     async processSelectionForUpload(currentNodes, currentPresentation, selections, payloadSlides){
 
-      console.log('process selection for upload called');
+      console.log('process selection for upload called', payloadSlides);
 
       if (!this.isValidSelection(selections)) {
         return this.alertDanger(`Upload failed: designs must have unique names.`);
@@ -151,7 +153,7 @@ export default {
         if(!selections){
           return this.alertWarning('No Frames were selected for processing');
         } else {
-          console.log('call the processing function here')
+       //   console.log('call the processing function here')
           
           this.apiCall(payloadSlides)
         }
@@ -168,11 +170,11 @@ export default {
 </script>
 
 <template>
-  <main class="h-100 d-flex flex-column">
+  <main class="d-flex flex-column" style="height: 500px">
     <!-- Splash screen -->
-    <div v-if="!afterInitialLoad" class="h-100 d-flex align-items-center justify-content-center">
+    <div v-if="!afterInitialLoad" class="d-flex align-items-flex-start justify-content-center" style="height: 500px">
       <figma-section>
-        <fieldset>
+        <fieldset class="justify-content-center">
     <!--  <figma-label class="w-75">Staging/Processing Host URL:</figma-label>
       <figma-input
               id="processing_host"
@@ -180,11 +182,17 @@ export default {
               placeholder="gitlab.mycompany.com"
               type="text"
             ></figma-input> -->
-          </fieldset>
-
             <figma-button  @click="onProcess" class="mt-2"> {{
         isUploading ? 'Processing' : 'Process'
       }}</figma-button>
+          </fieldset>
+
+
+     <ul>
+      <li v-for="item in responseDetails" class="text-xsmall">
+        {{item.icon}} - {{item.log}}
+      </li>
+     </ul>
 </figma-section>
     </div>
 

@@ -5,6 +5,7 @@ import {
     OVERLAY_CONTENT,
     TRIGGERS,
     TRIGGER_DELIMITER,
+    SPLIT_DELIMITER,
     PRES_SLIDE_DELIMITER,
     SLIDE_KEY,
     OVERLAY_KEY,
@@ -28,7 +29,7 @@ export const getSlides = async (presentation) => {
         const svgMap = {}
 
         for (const [nodeIndex, node] of slideNodes.entries()) {
-            console.log('node is', node)
+        //    console.log('node is', node)
             
             const slideContent = node.children.find(item => item.name === 'CONTENT');
             
@@ -42,7 +43,7 @@ export const getSlides = async (presentation) => {
         // we remove all duplicates.
         // Now we have an array that we can map all content back into
         let slideContent = [...new Set(slideNodes.map(node => {
-            return node.name.split(SLIDE_ID_FROM_NAME)[0];
+            return node.name.split(SPLIT_DELIMITER)[0]; //returns numbering convention
         }))].sort();
 
         // now we take our super simple array and create

@@ -2,6 +2,8 @@ export const DELIMITER = '___';
 
 export const SLIDE_ID_FROM_NAME = '_';
 
+export const SPLIT_DELIMITER = '_';
+
 export const TAB_OVERLAY_ID_FROM_NAME = '__';
 
 export const SLIDE_KEY = 'Slide_';

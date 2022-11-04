@@ -8,11 +8,15 @@ export default async function  handleProcessSelection(): Promise<void> {
   const currentSelection = getCurrentSelection();
   const currentPresentation = getCurrentPresentation();
   const currentNodes = getAllNodes();
-
-console.log('current presentation in process_selection.ts is', currentPresentation);
+  let payloadSlides = [];
 
   //const pagesMap = setPageMap(currentPresentation.children);
-  const payloadSlides = await getSlides(currentPresentation);
+  if(currentSelection.components.length > 0) {
+   payloadSlides = await getSlides(currentPresentation)
+  } else {
+    payloadSlides = await getSlides(currentPresentation);
+  }
+   
 
   return Promise.all(
     // export all selected components and frames
