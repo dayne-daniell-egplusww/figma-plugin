@@ -20,7 +20,7 @@ import {
     exportNodeSVG
 } from './utils';
 
-export const getSlides = async (presentation) => {
+export const getSlides = async (presentation, presentationName) => {
 
     return new Promise(async (resolve, reject) => {
 
@@ -61,6 +61,7 @@ export const getSlides = async (presentation) => {
                 type: 'slide',
                 detailName: presentation.name,
                 detailId: slideId,
+                presentationName: presentationName,
                 slideName: slideNode.name,
                 slideNameSlug: convertToSlug(slideNode.name),
                 order: slideIndex + 1,

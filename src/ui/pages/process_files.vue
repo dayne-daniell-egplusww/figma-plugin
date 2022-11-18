@@ -28,12 +28,9 @@ export default {
   },
   data() {
     return {
-      laVida: {
-        accessToken: '',
-        processing: { host: '' },
-      },
       selection: null,
-      presentation: null,
+      presentation: {name: ''},
+      processing: { host: '' },
       isUploading: false,
       afterInitialLoad: false,
       issue: null,
@@ -109,9 +106,12 @@ export default {
      * this is the function that does the post of packaged data to the server for further processing
      */
 
-    async apiCall(datum)  {
+    async apiCall(datum, presentationName)  {
       // before the apiCall (or the gitlab call), the data needs processed. 
       const payload = datum;
+      if(presentationName !== '') {
+        payload.presentationName = presentationName;
+      }
 
       console.log('payload is', payload)
 
@@ -155,7 +155,7 @@ export default {
         } else {
        //   console.log('call the processing function here')
           
-          this.apiCall(payloadSlides)
+          this.apiCall(payloadSlides, this.presentation.name || '');
         }
       }
     },
@@ -163,7 +163,7 @@ export default {
     onProcess() {
       this.isUploading = true;
       this.clearAlert();
-      postPluginMessage(FIGMA_MESSAGE_TYPES.PROCESS_SELECTION);
+      postPluginMessage(FIGMA_MESSAGE_TYPES.PROCESS_SELECTION, this.presentation.name);
     },
   },
 };
@@ -182,6 +182,11 @@ export default {
               placeholder="gitlab.mycompany.com"
               type="text"
             ></figma-input> -->
+            <figma-input
+            id="presentation_name"
+            v-model="presentation.name"
+            placeholder="Presentation Name"
+            type="text"></figma-input>
             <figma-button  @click="onProcess" class="mt-2"> {{
         isUploading ? 'Processing' : 'Process'
       }}</figma-button>

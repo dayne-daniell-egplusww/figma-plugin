@@ -4,17 +4,18 @@ import { setPageMap } from '../../../lib/set-page-map';
 import { nodeReNamer } from '../../../lib/node-renamer';
 import { FIGMA_MESSAGE_TYPES } from '~/shared/constants';
 
-export default async function  handleProcessSelection(): Promise<void> {
+export default async function  handleProcessSelection(presentationName): Promise<void> {
   const currentSelection = getCurrentSelection();
   const currentPresentation = getCurrentPresentation();
   const currentNodes = getAllNodes();
   let payloadSlides = [];
+  console.log('presentation name is going to be ', presentationName);
 
   //const pagesMap = setPageMap(currentPresentation.children);
   if(currentSelection.components.length > 0) {
-   payloadSlides = await getSlides(currentPresentation)
+   payloadSlides = await getSlides(currentPresentation, presentationName.data)
   } else {
-    payloadSlides = await getSlides(currentPresentation);
+    payloadSlides = await getSlides(currentPresentation, presentationName.data);
   }
    
 
